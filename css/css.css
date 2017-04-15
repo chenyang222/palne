@@ -1,0 +1,108 @@
+*{
+	margin:0;
+	padding: 0;
+}
+#back{
+	width:100%;
+	height:662px;
+	background-image:url(../images/背景.jpg);
+	overflow: hidden; 
+}
+#logo img{
+	width: 0px;
+	height: 0px;
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+#jianjie{
+	width: 250px;
+	height: 160px;
+	padding: 10px;
+	border-radius: 8px;
+	border: 2px solid lightgray;
+	background-color: lightslategray;
+	position: absolute;
+	left: -276px;
+	top: 106px;
+}
+#jianjie h2,#jianjie p{
+	color: #F0F0F0;
+	margin-bottom: 10px;
+}
+
+#humen img{
+	position: absolute;
+	width: 250px;
+	left: -300px;
+	top:401px
+}
+#box1{
+	width: 414px;
+	height: 488px;
+	position: absolute;
+	padding: 10px;
+	top: 104px;
+	left: 318px;
+	background-color: #252525;
+	border: 1px solid lightgray;
+	opacity: 0;
+}
+#box1 h2,#box1 p{
+	color: lightblue;
+}
+#box1 h2{
+	margin-bottom: 10px;
+}
+#fly{
+	width: 108px;
+	height: 86px;
+	background-image: url(../images/img_plane_main.png);
+	background-position: 287px 254px;
+	position: absolute;
+	top: 424px;
+	left: 168px;
+	opacity:1;
+}
+.bullet{
+	width: 6px;
+	height: 10px;
+	position: absolute;
+	left: 31px;
+	top: 0px;
+}
+#choice{
+	width: 547px;
+	height: 418px;
+	padding: 10px;
+	background-color:lightslategray ;
+	border-radius: 8px;
+	border: 1px solid lightgray;
+	position: absolute;
+	left: 776px;
+	top: -490px;
+	z-index: 99;
+}
+#one img,#two img,#three img,#four img{
+	width: 253px;
+	height: 190px;
+	margin: 5px;
+	border-radius: 3px;
+	border: 5px solid #F0F0F0;
+	float: left;
+}
+#btn img,#btn2 img{
+	position: absolute;
+}
+#btn img{
+	left: 931px;
+	top: -102px;
+
+}
+#btn2 img{
+	width:280px;
+	height: 70px;
+	left: 1072px;
+	top: 16px;
+
+}

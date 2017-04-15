@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/css.css"/>
+		
+		<style type="text/css">
+			#box1 strong{
+				width: 18px;
+				height: 52px;
+				position: absolute;
+				background-image: url(images/buttle.png);	
+				background-position: -945px -568px;	
+			}		
+			#btn{
+				cursor: pointer;
+			}	
+		</style>
+	</head>
+	<body>
+		<div id="back">
+			<div id="logo">
+				<img src="images/LOGO.png"/>
+			</div>
+			<div id="jianjie">
+				<h2>冒险之翼</h2>
+				<p>驾驶员小翼是一个满腔热血的直率少年。对小伙伴们十分信赖，也因为热情直爽的个性很受欢迎</p>
+			</div>
+			<div id="humen">
+				<img src="images/ui_girl21.png"/>
+			</div>
+			<div id="box1">
+				<h2>操作方法：</h2>
+				<p>方向键控制战机的移动，空格键控制子弹的发射</p>
+				<div id="fly"></div>
+			</div>
+			<div id="choice">
+				<div id="one">
+					<img src="images/2.jpg" style="opacity: 10;"/>
+				</div>
+				<div id="two">
+					<img src="images/1.jpg"/>
+				</div>
+				<div id="three">
+					<img src="images/3.jpg"/>
+				</div>
+				<div id="four">
+					<img src="images/4.jpg"/>
+				</div>
+			</div>
+			<div id="btn">
+				<img src="images/style.png"/>
+			</div>
+			<div id="btn2">
+				<img src="images/111.png"/>
+			</div>
+		</div>
+		<audio id="muS2" src="Sounds/achievement.mp3"></audio>	
+		<audio id="bullMu" src="Sounds/bullet.mp3"></audio>
+		<audio id="but" src="Sounds/button.mp3"></audio>
+	</body>
+	<script src="js/data.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/move4.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var hash = 'red';
+		var logo = getTagName('img',$('logo'))[0];
+		var star = getTagName('img',$('btn'))[0];
+		var muS2 = document.getElementById('muS2');
+		var bullMu = document.getElementById('bullMu');
+		var but = document.getElementById('but');
+		move(logo,{width:280,height:80},800,'easeOutStrong');
+		$('btn').onmousedown = function(){
+			star.src = 'images/style1.png';	
+			but.play();
+		}
+		$('btn').onmouseup = function(){
+			setTimeout(function(){
+				star.src = 'images/style.png';
+				open('Game Start.html#color='+hash,'_self');				
+			},500)			
+		}
+		var fly = document.getElementById('fly');
+		var box = document.getElementById('box1');
+		var humen = document.getElementById('humen');
+		var choice = document.getElementById('choice');
+		var divS = choice.getElementsByTagName('div');
+		var imgS = choice.getElementsByTagName('img');
+		var jianjie = document.getElementById('jianjie');
+		var h2 = jianjie.getElementsByTagName('h2')[0];
+		var p = jianjie.getElementsByTagName('p')[0];
+		var color = ['red','green','orange','blue'];
+		
+		var people = ['<img src="images/ui_girl21.png"/>','<img src="images/men1.png"/>','<img src="images/girl2.png"/>','<img src="images/men2.png"/>'];
+		var jjText = [{
+			H2:'甜心战神',
+			Text:'驾驶员为可爱活泼，迷糊淘气的小师妹。喜欢把自己的飞机涂装成甜蜜的颜色。不要因为她平时呆萌的样子就忽视她的强大战力哦'
+		},
+		{
+			H2:'冒险之翼',
+			Text:'驾驶员小翼是一个满腔热血的直率少年。对小伙伴们十分信赖，也因为热情直爽的个性很受欢迎'
+		},	
+		{
+			H2:'逆袭天使',
+			Text:'孤傲美丽的天才少女飞小羽，个性干练，不说多余的话也讨厌多余的装饰，能在瞬间干脆利落地击落敌机'
+		},
+		{
+			H2:'钢铁雷霆',
+			Text:'驾驶员雷诺，曾是秘密特种兵，现在的他是飞行员们的大哥哥，成熟可靠，但有时会满怀心事'
+		}		
+		];
+		h2.innerHTML = jjText[0].H2;
+		p.innerHTML = jjText[0].Text;	
+		fly.style.backgroundPosition = myData.red[0].poxy;
+		fly.style.width =  myData.red[0].wiDth + 'px';
+		fly.style.height =  myData.red[0].heiGht + 'px';
+		move(getTagName('img',$('humen'))[0],{left:0},1500,'easeOutStrong');
+		move(jianjie,{left:20},1000,'easeOutStrong');
+		move(choice,{top:104},1000,'easeOutStrong');
+		move(box,{opacity:0.8},2000,'easeOutStrong');
+		move(getTagName('img',$('btn'))[0],{top:548},1000,'easeOutStrong')
+		for(var i=0;i<divS.length;i++){
+			divS[i].index = i;
+			divS[i].onclick = function(){
+				muS2.load();
+				muS2.play();
+				for(var j=0;j<imgS.length;j++){
+					imgS[j].style.border = '5px solid #F0F0F0';
+				}
+				imgS[this.index].style.border = '5px solid lightseagreen';
+				fly.style.backgroundPosition = myData[color[this.index]][0].poxy;
+				fly.style.width = myData[color[this.index]][0].wiDth + 'px';
+				fly.style.height = myData[color[this.index]][0].heiGht + 'px';
+				fly.style.top = box.offsetHeight - myData[color[this.index]][0].heiGht + 'px';
+				fly.style.left = box.offsetWidth/2 - myData[color[this.index]][0].wiDth/2 + 'px';
+				humen.innerHTML = people[this.index];
+				move(getTagName('img',$('humen'))[0],{left:0},1500,'easeOutStrong');
+				jianjie.style.left = -300+'px'
+				h2.innerHTML = jjText[this.index].H2;
+				p.innerHTML = jjText[this.index].Text;
+				move(jianjie,{left:20},1000,'easeOutStrong');
+				hash = color[this.index];
+			}
+		}
+
+		var timer = null;
+		
+		var Left = false;
+		var Top = false;
+		var Bottom = false;
+		var Right = false;
+		
+		//方向键按下
+		document.onkeydown = function(ev){
+			var ev = ev || event;
+			var code = ev.keyCode;
+			
+			switch(code){
+				case 37:Left = true;
+				break;
+				case 39:Right = true;
+				break;
+				case 38:Top = true;
+				break;				
+				case 40:Bottom = true;
+				break;
+			}	
+			
+		}
+		//方向键抬起
+		document.onkeyup = function(ev){
+			var ev = ev || event;
+			var code = ev.keyCode;
+			switch(code){
+				case 37:Left = false;
+				break;
+				case 39:Right = false;
+				break;
+				case 38:Top = false;
+				break;
+				case 40:Bottom = false;
+				break;	
+				case 32:fire(myData[hash][0].bulltype,0); 
+						bullMu.load();
+						bullMu.play();
+				break;		
+			}			
+		}
+		
+		//my运动
+		timer = setInterval(function(){
+			//移动限制
+			if(fly.offsetLeft < 0){						
+				Left = false;
+			}
+			if(fly.offsetTop > box.offsetHeight - fly.offsetHeight){						
+				Bottom = false;
+			}
+			if(fly.offsetTop < 0){						
+				Top = false;
+			}
+			if(fly.offsetLeft > box.offsetWidth - fly.offsetWidth){						
+				Right = false;
+			}		
+			//上下左右移动
+			if(Left){
+				fly.style.left = (fly.offsetLeft - 5) + 'px';						
+			}
+			if(Top){
+				fly.style.top = (fly.offsetTop - 5) + 'px';	
+			}			
+			if(Right){
+				fly.style.left = (fly.offsetLeft + 5) + 'px';									
+			}
+			if(Bottom){
+				fly.style.top = (fly.offsetTop + 5) + 'px';					
+			}		
+		},10)
+		//子弹设定
+		function fire(type,bLevel){
+			var strong = document.createElement('strong');
+			strong.style.width = bulletData[type][bLevel].wiDth+'px';
+			strong.style.height = bulletData[type][bLevel].heiGht+'px';
+			strong.style.backgroundPosition = bulletData[type][bLevel].poxy;
+			strong.style.left = fly.offsetLeft + fly.offsetWidth/2 - bulletData[type][bLevel].wiDth/2 + 'px';
+			strong.style.top = fly.offsetTop - bulletData[type][bLevel].heiGht/2 + 'px';
+			box.appendChild(strong);
+			bullMove(strong);
+		}
+		//子弹飞行
+		function bullMove(obj){
+			obj.timer = setInterval(function(){
+				obj.style.top = obj.offsetTop - 5 + 'px';
+				if(obj.offsetTop<=0){
+					box.removeChild(obj);
+					clearInterval(obj.timer);
+				}		
+			},10)	
+		}		
+	</script>
+</html>
